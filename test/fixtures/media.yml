@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  plot: MyText
+  year: 1
+  runtime: 1
+  comment: MyText
+
+two:
+  title: MyString
+  plot: MyText
+  year: 1
+  runtime: 1
+  comment: MyText
