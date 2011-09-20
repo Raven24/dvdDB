@@ -18,30 +18,30 @@ class LanguagesControllerTest < ActionController::TestCase
 
   test "should create language" do
     assert_difference('Language.count') do
-      post :create, language: @language.attributes
+      post :create, :language => @language.attributes
     end
 
     assert_redirected_to language_path(assigns(:language))
   end
 
   test "should show language" do
-    get :show, id: @language.to_param
+    get :show, :id => @language.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @language.to_param
+    get :edit, :id => @language.to_param
     assert_response :success
   end
 
   test "should update language" do
-    put :update, id: @language.to_param, language: @language.attributes
+    put :update, :id => @language.to_param, :language => @language.attributes
     assert_redirected_to language_path(assigns(:language))
   end
 
   test "should destroy language" do
     assert_difference('Language.count', -1) do
-      delete :destroy, id: @language.to_param
+      delete :destroy, :id => @language.to_param
     end
 
     assert_redirected_to languages_path

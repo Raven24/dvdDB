@@ -1,30 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @medium.title %>
-</p>
-
-<p>
-  <b>Plot:</b>
-  <%= @medium.plot %>
-</p>
-
-<p>
-  <b>Year:</b>
-  <%= @medium.year %>
-</p>
-
-<p>
-  <b>Runtime:</b>
-  <%= @medium.runtime %>
-</p>
-
-<p>
-  <b>Comment:</b>
-  <%= @medium.comment %>
-</p>
-
+<%= @medium.title %>
 
 <%= link_to 'Edit', edit_medium_path(@medium) %> |
 <%= link_to 'Back', media_path %>
