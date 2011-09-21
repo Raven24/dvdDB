@@ -1,6 +1,13 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
   <title>DvdDB</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
@@ -8,7 +15,16 @@
 </head>
 <body>
 
-<%= yield %>
+  <header id="navigation">
+    <ul>
+      <li><%= link_to "Medien", media_path %></li>
+      <li><%= link_to "Sprachen", languages_path %></li>
+    </ul>
+  </header>
+
+  <div id="content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
