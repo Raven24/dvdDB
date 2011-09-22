@@ -1,0 +1,7 @@
+<div class="language">
+  <strong><%= link_to @language.name, @language %></strong>
+  <div class="actions">
+    <%= link_to 'Edit', edit_language_path(@language) %>
+    <%= link_to 'Destroy', @language, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div>

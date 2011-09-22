@@ -42,9 +42,20 @@ img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
 svg:not(:root) { overflow: hidden; }
 figure { margin: 0; }
 
-form { margin: 0; }
+form {
+	margin: 0;
+
+	.field {
+		display: inline-block; 
+	}
+
+	.actions {
+		margin: 1em 0 .5em;
+		display: block; 
+	}
+}
 fieldset { border: 0; margin: 0; padding: 0; }
-label { cursor: pointer; }
+label { cursor: pointer; font-size: .86em; display: block; margin: .4em 0 .1em; }
 legend { border: 0; padding: 0; }
 button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; }
 button, input { line-height: normal; *overflow: visible; }
@@ -60,6 +71,10 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
+
+@mixin -f-default-padding {
+	padding: .43em .8em;
+}
 
 @mixin -f-border-radius($radius: 4px) {
     -moz-border-radius: $radius;
@@ -81,6 +96,16 @@ td { vertical-align: top; }
     background: -o-linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* Opera11.10+ */
     background: -ms-linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* IE10+ */
     background: linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* W3C */
+}
+
+@mixin -f-left-right-gradient($topcolor, $bottomcolor) {
+    background: $topcolor; /* Old browsers */
+    background: -moz-linear-gradient(left, $topcolor 0%, $bottomcolor 100% ); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$topcolor), color-stop(100%,$bottomcolor)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* IE10+ */
+    background: linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* W3C */
 }
 
 @import "layout";

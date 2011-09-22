@@ -2,7 +2,7 @@ class LanguagesController < ApplicationController
   # GET /languages
   # GET /languages.json
   def index
-    @languages = Language.all
+    @languages = Language.all :order => 'name'
 
     respond_to do |format|
       format.html # index.html.erb

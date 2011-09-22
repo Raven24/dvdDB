@@ -33,13 +33,15 @@ body {
 
     li {
         display: inline-block;
+		text-shadow: -1px -1px 0 #000;
 
         a {
             display: block; 
-            padding: .43em .8em;
+            @include -f-default-padding;
             @include -f-border-radius(4px);
         }
         a:hover {
+			text-shadow: 1px 1px 0 #000;
             @include -f-top-bottom-gradient(#111, #666);
         }
     }
