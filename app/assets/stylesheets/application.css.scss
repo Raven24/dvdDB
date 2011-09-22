@@ -55,13 +55,23 @@ form {
 	}
 }
 fieldset { border: 0; margin: 0; padding: 0; }
-label { cursor: pointer; font-size: .86em; display: block; margin: .4em 0 .1em; }
+label {
+    cursor: pointer;
+    font-size: .86em;
+    display: block;
+    margin: .4em 0 .1em;
+}
+.checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .2em;
+}
 legend { border: 0; padding: 0; }
 button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; }
 button, input { line-height: normal; *overflow: visible; }
 table button, table input { *overflow: auto; }
 button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
-input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; vertical-align: middle; }
 input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
 input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }

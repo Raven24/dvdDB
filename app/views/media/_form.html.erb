@@ -31,6 +31,19 @@
     <%= f.text_field :runtime %>
   </div>
 
+  <div class="field">
+    <%= f.label :languages %>
+    <% @languages.each do |language| %>
+      <div class="checkbox">
+        <%= check_box_tag :languages_ids,
+                          language.id,
+                          @medium.languages.exists?(language),
+                          :name => "medium[language_ids][]" %>
+        <%= label_tag :language_ids, language.name %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
