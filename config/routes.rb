@@ -1,6 +1,8 @@
 DvdDB::Application.routes.draw do
 
-  root :to => 'languages#index'
+  resources :genres
+
+  root :to => 'media#index'
     
   resources :languages
 
