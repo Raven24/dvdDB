@@ -4,4 +4,6 @@ class Medium < ActiveRecord::Base
   has_and_belongs_to_many :languages
   has_and_belongs_to_many :genres
 
+  mount_uploader :cover, CoverUploader
+  
 end

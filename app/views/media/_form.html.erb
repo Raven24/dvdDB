@@ -15,23 +15,35 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
+  
+  <div class="field inline">
+    <%= f.label :year %>
+    <%= f.text_field :year, :size => 5 %>
+  </div>
 
+  <div class="field inline">
+    <%= f.label :runtime, "Runtime (min)" %>
+    <%= f.text_field :runtime, :size => 7 %>
+  </div>
+  
   <div class="field">
     <%= f.label :plot %>
-    <%= f.text_area :plot %>
+    <%= f.text_area :plot, :rows => 5 %>
   </div>
 
   <div class="field">
-    <%= f.label :year %>
-    <%= f.text_field :year %>
+    <%= f.label :cover %>
+	<div class="inline">
+	  <%= image_tag @medium.cover_url(:thumb) if @medium.cover? %>
+	</div>
+	<div class="inline">
+      <%= f.file_field :cover %>
+      <%= f.label :remote_cover_url, "or image URL" %>
+      <%= f.text_field :remote_cover_url %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :runtime %>
-    <%= f.text_field :runtime %>
-  </div>
-
-  <div class="field">
+  <div class="field inline">
     <%= f.label :languages %>
     <% @languages.each do |language| %>
       <div class="checkbox">
@@ -44,6 +56,19 @@
     <% end %>
   </div>
 
+	<div class="field inline">
+    <%= f.label :genres %>
+    <% Genre.all.each do |genre| %>
+      <div class="checkbox">
+        <%= check_box_tag :genres_ids,
+                          genre.id,
+                          @medium.genres.exists?(genre),
+                          :name => "medium[genre_ids][]" %>
+        <%= label_tag :genre_ids, genre.name %>
+      </div>
+    <% end %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
