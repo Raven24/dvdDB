@@ -44,7 +44,7 @@ class GenresController < ApplicationController
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to @genre, :notice => 'Genre was successfully created.' }
+        format.html { redirect_to genres_url, :notice => 'Genre was successfully created.' }
         format.json { render :json => @genre, :status => :created, :location => @genre }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class GenresController < ApplicationController
 
     respond_to do |format|
       if @genre.update_attributes(params[:genre])
-        format.html { redirect_to @genre, :notice => 'Genre was successfully updated.' }
+        format.html { redirect_to genres_url, :notice => 'Genre was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

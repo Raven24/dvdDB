@@ -44,7 +44,7 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       if @language.save
-        format.html { redirect_to @language, :notice => 'Language was successfully created.' }
+        format.html { redirect_to languages_url, :notice => 'Language was successfully created.' }
         format.json { render :json => @language, :status => :created, :location => @language }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       if @language.update_attributes(params[:language])
-        format.html { redirect_to @language, :notice => 'Language was successfully updated.' }
+        format.html { redirect_to languages_url, :notice => 'Language was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
