@@ -1,3 +1,55 @@
-// Place all the styles related to the media controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.medium {
+	@extend .clearfix;
+	
+	border: 2px solid #CCC;
+	padding: 6px;
+	position: relative;
+	margin: 0 0 1.3em;
+	@include -f-border-radius(3px);
+
+	.cover {
+		float: left;
+		margin-right: 10px;
+	}
+
+	.title {
+		font-size: 1.5em;
+		font-weight: bolder;
+		margin-bottom: .5em;
+	}
+	.figures {
+		font-size: .8em;
+		color: #666;
+		margin: 0 0 .7em;
+
+		span {
+			display: inline-block;
+			margin-right: .3em;
+			padding-right: .6em;
+			border-right: 1px solid #CCC;
+		}
+		span:last-child {
+			border: none;
+		}
+
+	}
+
+	.actions {
+		position: absolute;
+		top: 6px; right: 6px; 
+	}
+
+}
+
+.edit_medium {
+	width: 85%;
+
+	.field {
+		display: block;
+	}
+
+	.inline {
+		display: inline-block;
+	}
+}

@@ -82,6 +82,10 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
 table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
 @mixin -f-default-padding {
 	padding: .43em .8em;
 }
@@ -120,4 +124,4 @@ td { vertical-align: top; }
 
 @import "layout";
 
-@import "languages", "media";
+@import "languages", "genres", "media";
