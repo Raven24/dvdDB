@@ -42,7 +42,7 @@
 
 }
 
-.edit_medium {
+.new_medium, .edit_medium {
 	width: 85%;
 
 	.field {
@@ -51,5 +51,29 @@
 
 	.inline {
 		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+.suggestions {
+	float: right;
+	width: 28%;
+	border: 2px solid #CCC;
+	@include -f-border-radius(3px);
+
+	.movie {
+		font-size: .8em;
+		border-bottom: 1px solid #DDD;
+		padding: .5em;
+
+		.title {
+			font-weight: bold;
+		}
+		p {
+			margin: 5px 0;
+		}
+	}
+	.movie:last-child {
+		border: none; 
 	}
 }

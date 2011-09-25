@@ -1,0 +1,23 @@
+
+var suggestions = $('<div/>').addClass('suggestions');
+
+<% @movies.each do |movie| %>
+
+  suggestions.append('<div class="movie" data-attributes="<%=j movie.as_json.merge(
+        :year => movie.year,
+        :director => movie.director,
+        :genres => movie.genres,
+        :runtime => movie.length,
+        :plot => movie.plot,
+        :poster => movie.poster
+      ).to_json %>">' +
+    '<div style="float: left; margin-right: 1em;">'+
+    '  <%=j image_tag( movie.poster, :height => 60) if !movie.poster.nil? %>'+
+    '</div>'+
+    '<div class="title"><%=j movie.title %> (<%= movie.year %>)</div>'+
+    '<p><%=j movie.plot %></p>'+
+    '</div>');
+
+<% end if @movies.size > 0 %>
+
+$('form').before(suggestions);

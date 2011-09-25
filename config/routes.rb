@@ -1,5 +1,7 @@
 DvdDB::Application.routes.draw do
 
+  get "imdb/fetch"
+
   resources :genres
 
   root :to => 'media#index'

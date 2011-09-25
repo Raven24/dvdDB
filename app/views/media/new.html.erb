@@ -3,3 +3,21 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', media_path %>
+
+<%= javascript_tag do %>
+  $('.title').append('<a href="#" id="find_movie">Search</a>');
+  var findBtn = $('#find_movie');
+  var loading = $('<span>loading ... <small>(this may take a few seconds)</small></span>');
+ 
+  findBtn.click(function() {
+	findBtn = $('#find_movie');
+	var origBtn = findBtn.clone(true);
+	findBtn.replaceWith(loading);
+	$('.suggestions').fadeOut('fast', function() { $(this).remove()});
+	
+	$.getScript('<%= url_for :controller=>'imdb', :action=>'fetch' %>?query='+$('#medium_title').val(), function() {
+      loading.replaceWith(origBtn);
+	});
+	return false;
+  });
+<% end %>

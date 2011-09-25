@@ -1,5 +1,5 @@
  
-<div class="medium">
+<div class="medium" data-id="<%= @medium.id %>">
 
   <div class="cover">
     <%= link_to image_tag(@medium.cover_url(:thumb)), @medium  if @medium.cover? %>

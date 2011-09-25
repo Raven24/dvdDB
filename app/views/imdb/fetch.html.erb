@@ -1,0 +1,14 @@
+<h1>Imdb#fetch</h1>
+
+<% @movies.each do |movie| %>
+  <div class="movie clearfix">
+    <h3><%= movie.title %> (<%= movie.year %>)</h3>
+    <div style="float: left; margin-right: 1em;">
+      <%= image_tag( movie.poster, :height => 160) if !movie.poster.nil? %>
+    </div>
+    <p><%= movie.plot %></p>
+
+    <pre><%= movie.to_json  %>
+  </div>
+  
+<% end if @movies.size > 0 %>
