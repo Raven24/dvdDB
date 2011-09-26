@@ -15,6 +15,12 @@ class MediaController < ApplicationController
   def show
     @medium = Medium.find(params[:id])
 
+    # generate preview version of image, if not exists
+    if( !@medium.cover.preview.file.exists? )
+      @medium.cover.preview.cache!(@medium.cover.file)
+      @medium.cover.preview.store!
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @medium }

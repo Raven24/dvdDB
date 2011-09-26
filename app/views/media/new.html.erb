@@ -20,4 +20,12 @@
 	});
 	return false;
   });
+
+  $('.suggestions .movie').live('click', function() {
+    var data = $(this).data('attributes');
+    $(this).siblings().removeClass('selected').end().addClass('selected');
+    $.each(data, function(idx, elem) {
+      $('#medium_'+idx).val(elem);
+    });
+  });
 <% end %>

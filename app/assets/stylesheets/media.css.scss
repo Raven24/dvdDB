@@ -18,26 +18,26 @@
 		font-weight: bolder;
 		margin-bottom: .5em;
 	}
-	.figures {
-		font-size: .8em;
-		color: #666;
-		margin: 0 0 .7em;
-
-		span {
-			display: inline-block;
-			margin-right: .3em;
-			padding-right: .6em;
-			border-right: 1px solid #CCC;
-		}
-		span:last-child {
-			border: none;
-		}
-
-	}
-
 	.actions {
 		position: absolute;
 		top: 6px; right: 6px; 
+	}
+
+}
+
+.figures {
+	font-size: .8em;
+	color: #666;
+	margin: 0 0 .7em;
+
+	span {
+		display: inline-block;
+		margin-right: .3em;
+		padding-right: .6em;
+		border-right: 1px solid #CCC;
+	}
+	span:last-child {
+		border: none;
 	}
 
 }
@@ -62,10 +62,12 @@
 	@include -f-border-radius(3px);
 
 	.movie {
+		@extend .clearfix;
 		font-size: .8em;
 		border-bottom: 1px solid #DDD;
 		padding: .5em;
-
+		cursor: pointer;
+		
 		.title {
 			font-weight: bold;
 		}
@@ -73,7 +75,33 @@
 			margin: 5px 0;
 		}
 	}
+	.movie:hover {
+		background: #FFD;
+	}
 	.movie:last-child {
 		border: none; 
+	}
+	.selected {
+		background: #DDF;
+	}
+}
+
+.single {
+	@extend .clearfix;
+	
+	.image {
+		float: right;
+		padding: 0 0 1em 1em;
+		background: #FFF;
+	}
+
+	.figures {
+		@extend .figures;
+	}
+
+	.info {
+		padding-top: .5em;
+		border-top: 1px solid #CCC;
+		color: #666;
 	}
 }

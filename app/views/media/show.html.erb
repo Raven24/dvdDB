@@ -1,3 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<%= render "single" %>
+<div class="single">
+
+  <div class="image">
+    <%= link_to image_tag(@medium.cover_url(:preview)), @medium.cover_url, :target => "_blank" if @medium.cover? %>
+  </div>
+
+  <h2><%= @medium.title %></h2>
+
+  <p class="figures">
+    <span><%= @medium.year if @medium.year %></span>
+    <span><%= @medium.runtime.to_s + " min" if @medium.runtime? %></span>
+  </p>
+
+  <p class="plot">
+    <%= @medium.plot %>
+  </p>
+
+  <p class="info">
+    <i>Genres:</i> <%= @medium.genres.collect{|genre| genre.name}.join ", " %><br>
+    <i>Languages:</i> <%= @medium.languages.collect{|language| language.name}.join ", " %><br>
+  </p>
+
+</div>
