@@ -31,21 +31,23 @@
     <%= f.text_area :plot, :rows => 5 %>
   </div>
 
-  <div class="field">
-    <%= f.label :cover %>
-	<div class="inline">
-	  <%= image_tag @medium.cover_url(:thumb) if @medium.cover? %>
+  <%= f.fields_for :images do |img| %>
+	<div class="field">
+        <%= img.label :file %>
+        <div class="inline">
+        <%= image_tag @medium.cover_url(:thumb) if !img.object.new_record? %>
+        </div>
+        <div class="inline">
+        <%= img.file_field :file %>
+        <%= img.label :remote_file_url, "or image URL" %>
+        <%= img.text_field :remote_file_url %>
+        </div>
 	</div>
-	<div class="inline">
-      <%= f.file_field :cover %>
-      <%= f.label :remote_cover_url, "or image URL" %>
-      <%= f.text_field :remote_cover_url %>
-    </div>
-  </div>
+  <% end %>
 
   <div class="field inline">
     <%= f.label :languages %>
-    <% @languages.each do |language| %>
+    <% Language.all(:order=>'name ASC').each do |language| %>
       <div class="checkbox">
         <%= check_box_tag :languages_ids,
                           language.id,
@@ -58,7 +60,7 @@
 
 	<div class="field inline">
     <%= f.label :genres %>
-    <% Genre.all.each do |genre| %>
+    <% Genre.all(:order=>'name ASC').each do |genre| %>
       <div class="checkbox">
         <%= check_box_tag :genres_ids,
                           genre.id,
@@ -68,6 +70,9 @@
       </div>
     <% end %>
   </div>
+
+  <%= f.hidden_field :imdb_id %>
+  <%= f.hidden_field :imdb_url %>
   
   <div class="actions">
     <%= f.submit %>

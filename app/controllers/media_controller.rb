@@ -31,7 +31,8 @@ class MediaController < ApplicationController
   # GET /media/new.json
   def new
     @medium = Medium.new
-    @languages = Language.all
+    @medium.images.build
+    @languages = Language.all :order => 'name ASC'
 
     respond_to do |format|
       format.html # new.html.erb

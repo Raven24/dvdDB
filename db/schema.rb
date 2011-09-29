@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110923190223) do
+ActiveRecord::Schema.define(:version => 20110929092034) do
 
   create_table "genres", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(:version => 20110923190223) do
   create_table "genres_media", :id => false, :force => true do |t|
     t.integer "genre_id"
     t.integer "medium_id"
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "medium_id"
+    t.string   "file"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "languages", :force => true do |t|
@@ -43,7 +51,8 @@ ActiveRecord::Schema.define(:version => 20110923190223) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cover"
+    t.string   "imdb_id"
+    t.string   "imdb_url"
   end
 
 end

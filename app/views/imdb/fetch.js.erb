@@ -8,7 +8,9 @@ var suggestions = $('<div/>').addClass('suggestions');
         :year => movie.year,
         :runtime => movie.length,
         :plot => movie.plot,
-        :remote_cover_url => movie.poster
+        :images_attributes_0_remote_file_url => movie.poster,
+        :imdb_id => movie.id,
+        :imdb_url => movie.url
       ).to_json %>">' +
     '<div style="float: left; margin-right: 1em;">'+
     '  <%=j image_tag( movie.poster, :height => 60) if !movie.poster.nil? %>'+
