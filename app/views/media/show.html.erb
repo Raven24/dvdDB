@@ -7,8 +7,9 @@
   <h2><%= @medium.title %></h2>
 
   <p class="figures">
-    <span><%= @medium.year if @medium.year %></span>
-    <span><%= @medium.runtime.to_s + " min" if @medium.runtime? %></span>
+    <% if @medium.year? %><span><%= @medium.year %></span><% end %>
+    <% if @medium.runtime? %><span><%= @medium.runtime.to_s + " min" %></span><% end %>
+    <% if @medium.imdb_id? %><span>#<%= link_to @medium.imdb_id, @medium.imdb_url, :target => '_blank' %> on IMDB</span><% end %>
   </p>
 
   <p class="plot">

@@ -32,8 +32,7 @@ class MediaController < ApplicationController
   def new
     @medium = Medium.new
     @medium.images.build
-    @languages = Language.all :order => 'name ASC'
-
+   
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @medium }
@@ -43,7 +42,6 @@ class MediaController < ApplicationController
   # GET /media/1/edit
   def edit
     @medium = Medium.find(params[:id])
-    @languages = Language.all
   end
 
   # POST /media

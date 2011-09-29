@@ -71,8 +71,19 @@
     <% end %>
   </div>
 
-  <%= f.hidden_field :imdb_id %>
-  <%= f.hidden_field :imdb_url %>
+  <% if f.object.new_record? %>
+    <%= f.hidden_field :imdb_id %>
+    <%= f.hidden_field :imdb_url %>
+  <% else %>
+    <div class="field">
+      <%= f.label :imdb_id, "IMDB ID" %>
+      <%= f.text_field :imdb_id, :size => 10 %>
+    </div>
+    <div class="field">
+      <%= f.label :imdb_url, "IMDB URL"%>
+      <%= f.text_field :imdb_url %>
+    </div>
+  <% end %>
   
   <div class="actions">
     <%= f.submit %>
