@@ -23,6 +23,10 @@
     </ul>
   </header>
 
+  <% if !notice.nil? %>
+  <div id="notice"><%= notice %></div>
+  <% end %>
+
   <div id="content">
     <%= yield %>
   </div>

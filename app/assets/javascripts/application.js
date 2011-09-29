@@ -7,3 +7,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+
+	// remove the notice
+	setTimeout(function() {
+		$('#notice').slideUp(700, function() {
+			$(this).remove();
+		});
+	}, 3500);
+	
+});

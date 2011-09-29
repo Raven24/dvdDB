@@ -96,6 +96,15 @@ td { vertical-align: top; }
     border-radius: $radius;
 }
 
+@mixin -f-border-radius-bottom($radius: 4px) {
+    -webkit-border-bottom-right-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-radius-bottomright: $radius;
+	-moz-border-radius-bottomleft: $radius;
+	border-bottom-right-radius: $radius;
+	border-bottom-left-radius: $radius;
+}
+
 @mixin -f-box-shadow($x, $y, $width, $color) {
     -moz-box-shadow: $x $y $width $color;
     -webkit-box-shadow: $x $y $width $color;

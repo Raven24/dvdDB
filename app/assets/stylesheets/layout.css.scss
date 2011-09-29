@@ -14,7 +14,7 @@ body {
 #navigation {
     @include -f-top-bottom-gradient(#555, #000);
     padding: 1.5em 2em;
-    margin: 1em 0;
+    margin: 1em 0 0;
     color: #FAFAFA;
     font-weight: bold;
     font-size: 0.88em; 
@@ -55,6 +55,18 @@ body {
             @include -f-top-bottom-gradient(#111, #666);
         }
     }
+}
+
+#notice {
+	margin: 0 auto;
+	padding: .5em .9em;
+	width: $width;
+	text-align: center;
+	font-weight: bold; 
+	background: #FFC;
+
+	@include -f-border-radius-bottom(4px);
+	@include -f-box-shadow(0, 2px, 3px, #BBB);
 }
 
 #content {
