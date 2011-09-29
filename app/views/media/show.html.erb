@@ -10,6 +10,7 @@
     <% if @medium.year? %><span><%= @medium.year %></span><% end %>
     <% if @medium.runtime? %><span><%= @medium.runtime.to_s + " min" %></span><% end %>
     <% if @medium.imdb_id? %><span>#<%= link_to @medium.imdb_id, @medium.imdb_url, :target => '_blank' %> on IMDB</span><% end %>
+    <span><%= link_to 'Edit', edit_medium_path(@medium) %></span>
   </p>
 
   <p class="plot">

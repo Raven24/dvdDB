@@ -34,13 +34,17 @@
   <%= f.fields_for :images do |img| %>
 	<div class="field">
         <%= img.label :file %>
+        <% if !img.object.new_record? %>
+          <div class="inline">
+          <%= image_tag @medium.cover_url(:thumb) %>
+          </div>
+        <% end %>
         <div class="inline">
-        <%= image_tag @medium.cover_url(:thumb) if !img.object.new_record? %>
-        </div>
-        <div class="inline">
-        <%= img.file_field :file %>
-        <%= img.label :remote_file_url, "or image URL" %>
-        <%= img.text_field :remote_file_url %>
+          <%= img.file_field :file %>
+          <%= img.label :remote_file_url, "or image URL" %>
+          <%= img.text_field :remote_file_url %>
+          <%= img.label :description %>
+          <%= img.select(:description, [['Poster','poster'], ['Cover','cover'], ['Other', 'other']]) %>
         </div>
 	</div>
   <% end %>
