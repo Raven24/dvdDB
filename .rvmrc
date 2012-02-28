@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -e '.rvmrc_custom' ]; then
+  source .rvmrc_custom;
+else
+  rvm --create use 1.9.3@dvdDB
+fi
+
+if [ "$(gem --version)" != "1.8.12" ]; then
+  rvm rubygems 1.8.12
+fi
