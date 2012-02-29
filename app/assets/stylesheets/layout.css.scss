@@ -70,18 +70,23 @@ body {
 }
 
 #content {
-    margin: 1em auto;
-    padding: 1em 1.7em;
-    width: $width;
-    background: #FFF;
-    @include -f-border-radius(3px);
-    @include -f-box-shadow(0, 0, 3px, #A0A0A0);
+  margin: 1em auto;
+  padding: 1em 1.7em;
+  width: $width;
+  background: #FFF;
+  @include -f-border-radius(3px);
+  @include -f-box-shadow(0, 0, 3px, #A0A0A0);
 
-	/* if https://github.com/nex3/sass/issues/46 is resolved, comment
-	 * the following in
-	 * @media (max-width: #{$flowWidth}) {*/
-	@media (max-width: 800px) {
-		width: auto;
-		min-width: $minWidth;
-	}
+  /* if https://github.com/nex3/sass/issues/46 is resolved, comment
+    * the following in
+    * @media (max-width: #{$flowWidth}) {*/
+  @media (max-width: 800px) {
+      width: auto;
+      min-width: $minWidth;
+  }
+
+  #loader {
+    margin-top: 2em;
+    text-align: center;
+  }
 }

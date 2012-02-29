@@ -2,9 +2,12 @@
 
 <%= link_to 'New Medium', new_medium_path %>
 
-<% @media.each do |medium| @medium = medium%>
-	<%= render "single" %>
-<% end %>
+<div id="media">
+<!-- insert content here -->
+</div>
 
+<div id="loader"></div>
 
-
+<% content_for :head do
+  handlebars "medium"
+end %>

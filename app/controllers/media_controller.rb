@@ -1,17 +1,12 @@
 class MediaController < ApplicationController
-  # GET /media
-  # GET /media.json
+
+  respond_to :html, :json
+  
   def index
     @media = Medium.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @media }
-    end
   end
 
-  # GET /media/1
-  # GET /media/1.json
   def show
     @medium = Medium.find(params[:id])
 
@@ -20,32 +15,17 @@ class MediaController < ApplicationController
       @medium.cover.preview.cache!(@medium.cover.file)
       @medium.cover.preview.store!
     end
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @medium }
-    end
   end
 
-  # GET /media/new
-  # GET /media/new.json
   def new
     @medium = Medium.new
     @medium.images.build
-   
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @medium }
-    end
   end
 
-  # GET /media/1/edit
   def edit
     @medium = Medium.find(params[:id])
   end
 
-  # POST /media
-  # POST /media.json
   def create
     @medium = Medium.new(params[:medium])
 

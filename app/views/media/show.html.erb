@@ -1,25 +1,11 @@
-<div class="single">
+<script type="text/javascript">
+var modelAttributes = <%= raw render(:file => 'media/show.json.rabl', :object => @medium) %>;
+</script>
 
-  <div class="image">
-    <%= link_to image_tag(@medium.cover_url(:preview)), @medium.cover_url, :target => "_blank" if @medium.cover? %>
-  </div>
-
-  <h2><%= @medium.title %></h2>
-
-  <p class="figures">
-    <% if @medium.year? %><span><%= @medium.year %></span><% end %>
-    <% if @medium.runtime? %><span><%= @medium.runtime.to_s + " min" %></span><% end %>
-    <% if @medium.imdb_id? %><span>#<%= link_to @medium.imdb_id, @medium.imdb_url, :target => '_blank' %> on IMDB</span><% end %>
-    <span><%= link_to 'Edit', edit_medium_path(@medium) %></span>
-  </p>
-
-  <p class="plot">
-    <%= @medium.plot %>
-  </p>
-
-  <p class="info">
-    <i>Genres:</i> <%= @medium.genres.collect{|genre| genre.name}.join ", " %><br>
-    <i>Languages:</i> <%= @medium.languages.collect{|language| language.name}.join ", " %><br>
-  </p>
-
+<div id="medium">
+<!-- insert content here -->
 </div>
+
+<% content_for :head do
+  handlebars "singleMedium"
+end %>

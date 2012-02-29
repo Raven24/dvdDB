@@ -49,19 +49,6 @@
 	</div>
   <% end %>
 
-  <div class="field inline">
-    <%= f.label :languages %>
-    <% Language.all(:order=>'name ASC').each do |language| %>
-      <div class="checkbox">
-        <%= check_box_tag :languages_ids,
-                          language.id,
-                          @medium.languages.exists?(language),
-                          :name => "medium[language_ids][]" %>
-        <%= label_tag :language_ids, language.name %>
-      </div>
-    <% end %>
-  </div>
-
 	<div class="field inline">
     <%= f.label :genres %>
     <% Genre.all(:order=>'name ASC').each do |genre| %>

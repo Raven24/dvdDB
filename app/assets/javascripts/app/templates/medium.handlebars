@@ -1,0 +1,29 @@
+
+<div class="cover">
+  <a href="{{show_url}}"><img src="{{thumbnail_url}}" alt="poster" /></a>
+</div>
+
+<div class="title">
+  <a href="{{show_url}}">{{title}}</a>
+</div>
+<div class="figures">
+  <span>{{year}}</span>
+  <span>{{runtime}}</span>
+</div>
+<div class="plot">
+  {{plot}}
+</div>
+
+<div class="actions">
+  {{#if edit_url}}
+  <a href="{{edit_url}}">Edit</a>
+  {{/if}}
+  {{#if delete_url}}
+  <a href="{{delete_url}}">Delete</a>
+  {{/if}}
+</div>
+
+<p class="info">
+  <i>Genres:</i> <br>
+  <i>Languages:</i> <br>
+</p>

@@ -87,21 +87,36 @@
 }
 
 .single {
-	@extend .clearfix;
-	
-	.image {
-		float: right;
-		padding: 0 0 1em 1em;
-		background: #FFF;
-	}
+  @extend .clearfix;
 
-	.figures {
-		@extend .figures;
-	}
+  .image {
+    float: right;
+    padding: 0 0 1em 1em;
+    background: #FFF;
+  }
 
-	.info {
-		padding-top: .5em;
-		border-top: 1px solid #CCC;
-		color: #666;
-	}
+  .figures {
+    @extend .figures;
+  }
+
+  .info {
+    padding-top: .5em;
+    border-top: 1px solid #CCC;
+    color: #666;
+
+    dl {
+      margin: 0;
+    }
+    dt, dd {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+    dd:after {
+      content: ", ";
+    }
+    dd:last-child:after {
+      content: "";
+    }
+  }
 }

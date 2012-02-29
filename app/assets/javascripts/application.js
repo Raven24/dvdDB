@@ -6,10 +6,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require underscore
+//= require backbone
+//= require handlebars
+//= require app
 
 $(document).ready(function() {
 
+    app.initialize();
+    
 	// remove the notice
 	setTimeout(function() {
 		$('#notice').slideUp(700, function() {

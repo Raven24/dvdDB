@@ -1,0 +1,40 @@
+
+<div class="image">
+  <a href="{{poster_full_url}}" target="_blank"><img src="{{poster_medium_url}}" alt="poster" /></a>
+</div>
+
+<h2>{{title}}</h2>
+
+<p class="figures">
+  {{#if year}}
+  <span>{{year}}</span>
+  {{/if}}
+  {{#if runtime}}
+  <span>{{runtime}}</span>
+  {{/if}}
+  {{#if imdb_id}}
+  <span>#<a href="{{imdb_url}}" target="_blank">{{imdb_id}} on IMDB</span>
+  {{/if}}
+  {{#if edit_url}}
+  <span><a href="{{edit_url}}">Edit</a></span>
+  {{/if}}
+  {{#if delete_url}}
+  <span><a href="{{delete_url}}">Delete</a></span>
+  {{/if}}
+</p>
+
+<p class="plot">
+  {{plot}}
+</p>
+
+<div class="info">
+  <dl>
+    <dt>Genres:</dt>
+    {{#each genres}}
+    <dd>{{name}}</dd>
+    {{/each}}
+  </dl>
+  <dl>
+    <dt>Languages:</dt>
+    <dd>...</dd>
+</div>
