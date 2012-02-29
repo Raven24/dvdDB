@@ -23,6 +23,13 @@
 		top: 6px; right: 6px; 
 	}
 
+	.genres span:after {
+      content: ", ";
+	}
+	.genres span:last-child:after {
+      content: "";
+	}
+
 }
 
 .figures {
@@ -30,13 +37,13 @@
 	color: #666;
 	margin: 0 0 .7em;
 
-	span {
+	& > span {
 		display: inline-block;
 		margin-right: .3em;
 		padding-right: .6em;
 		border-right: 1px solid #CCC;
 	}
-	span:last-child {
+	& > span:last-child {
 		border: none;
 	}
 
@@ -44,10 +51,6 @@
 
 .new_medium, .edit_medium {
 	width: 85%;
-
-	.field {
-		display: block;
-	}
 
 	.inline {
 		display: inline-block;

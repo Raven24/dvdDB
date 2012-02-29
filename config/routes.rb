@@ -1,10 +1,12 @@
 DvdDB::Application.routes.draw do
 
+  root :to => 'media#index'
+  
+  devise_for :users
+
   get "imdb/fetch"
 
   resources :genres
-
-  root :to => 'media#index'
     
   resources :languages
 

@@ -18,11 +18,17 @@
 <body>
 
   <header id="navigation">
-    <ul>
-      <li><%= link_to "Medien", media_path %></li>
-      <li><%= link_to "Sprachen", languages_path %></li>
-	  <li><%= link_to "Genres", genres_path %></li>
-    </ul>
+    <div>
+      <ul class="user">
+        <%= render 'devise/menu/registration_items' %>
+        <%= render 'devise/menu/login_items' %>
+      </ul>
+      <ul>
+        <li><%= link_to "Medien", media_path %></li>
+        <li><%= link_to "Sprachen", languages_path %></li>
+        <li><%= link_to "Genres", genres_path %></li>
+      </ul>
+    </div>
   </header>
 
   <% if !notice.nil? %>
