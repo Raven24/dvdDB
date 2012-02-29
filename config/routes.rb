@@ -1,8 +1,10 @@
 DvdDB::Application.routes.draw do
-
-  root :to => 'media#index'
   
   devise_for :users
+
+  resources :media do
+    get 'page/:page', :action=>:index, :on=>:collection
+  end
 
   get "imdb/fetch"
 
@@ -10,7 +12,7 @@ DvdDB::Application.routes.draw do
     
   resources :languages
 
-  resources :media
+  root :to => 'media#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

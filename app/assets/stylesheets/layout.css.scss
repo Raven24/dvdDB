@@ -1,9 +1,4 @@
 
-$background: #EEE;
-$width: 950px;
-$flowWidth: 800px;
-$minWidth: 360px;
-
 html, body {
     min-height: 100%;
 }
@@ -93,6 +88,7 @@ body {
   padding: 1em 1.7em;
   width: $width;
   background: #FFF;
+  position:relative; 
   @include -f-border-radius(3px);
   @include -f-box-shadow(0, 0, 3px, #A0A0A0);
 
@@ -102,10 +98,5 @@ body {
   @media (max-width: 800px) {
       width: auto;
       min-width: $minWidth;
-  }
-
-  #loader {
-    margin-top: 2em;
-    text-align: center;
   }
 }

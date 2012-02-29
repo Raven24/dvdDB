@@ -1,13 +1,24 @@
+<script type="text/javascript">
+var modelAttributes = <%= raw render(:file => 'media/index.json.rabl', :object => @media) %>;
+var pages =  <%=  @pages %>;
+</script>
+
 <h1>Listing media</h1>
 
 <%= link_to 'New Medium', new_medium_path %>
+
+<div id="loader"></div>
+
+<div class="pagination"></div>
 
 <div id="media">
 <!-- insert content here -->
 </div>
 
-<div id="loader"></div>
-
 <% content_for :head do
-  handlebars "medium"
+  out = []
+  out << handlebars("medium")
+  out << handlebars("pagination")
+
+  out.join.html_safe
 end %>

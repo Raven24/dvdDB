@@ -2,18 +2,37 @@
 app.Router = Backbone.Router.extend({
 
   routes: {
-    "media"    : "media",
-    "media/:id": "medium",
-    "genres"   : "genres",
-    "languages": "languages",
+    "media"           : "media",
+    "media/page/:page": "media",
+    "media/:id"       : "medium",
+    "genres"          : "genres",
+    "languages"       : "languages",
   },
 
-  media: function() {
-    app.media = new app.collections.Media;
-    app.page  = new app.views.Media({
-      'collection': app.media
+  media: function(page) {
+    var attrs, opts;
+    if(!page) {
+      attrs = modelAttributes;
+    } else {
+      opts  = { 'url': '/media/page/'+page };
+    }
+    
+    app.media = new app.collections.Media(attrs, opts);
+    app.pagination = new app.models.Pagination({
+      'pages'  : pages,
+      'page'   : page,
+      'baseUrl': "/media"
+    });
+    app.paginator = new app.views.Pagination({
+      model: app.pagination
     }).render();
-    $('#media').replaceWith(app.page.el);
+    app.page  = new app.views.Media({
+      'collection': app.media,
+      'pagination': app.pagination
+    }).render();
+    
+    $('body #media').replaceWith(app.page.el);
+    $('.pagination').replaceWith(app.paginator.el);
   },
 
   medium: function(id) {

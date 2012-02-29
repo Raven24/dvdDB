@@ -86,51 +86,9 @@ td { vertical-align: top; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
-@mixin -f-default-padding {
-	padding: .43em .8em;
-}
-
-@mixin -f-border-radius($radius: 4px) {
-    -moz-border-radius: $radius;
-    -webkit-border-radius: $radius;
-    border-radius: $radius;
-}
-
-@mixin -f-border-radius-bottom($radius: 4px) {
-    -webkit-border-bottom-right-radius: $radius;
-	-webkit-border-bottom-left-radius: $radius;
-	-moz-border-radius-bottomright: $radius;
-	-moz-border-radius-bottomleft: $radius;
-	border-bottom-right-radius: $radius;
-	border-bottom-left-radius: $radius;
-}
-
-@mixin -f-box-shadow($x, $y, $width, $color) {
-    -moz-box-shadow: $x $y $width $color;
-    -webkit-box-shadow: $x $y $width $color;
-    box-shadow: $x $y $width $color;
-}
-
-@mixin -f-top-bottom-gradient($topcolor, $bottomcolor) {
-    background: $topcolor; /* Old browsers */
-    background: -moz-linear-gradient(top, $topcolor 0%, $bottomcolor 100% ); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$topcolor), color-stop(100%,$bottomcolor)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* Opera11.10+ */
-    background: -ms-linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* IE10+ */
-    background: linear-gradient(top, $topcolor 0%,$bottomcolor 100%); /* W3C */
-}
-
-@mixin -f-left-right-gradient($topcolor, $bottomcolor) {
-    background: $topcolor; /* Old browsers */
-    background: -moz-linear-gradient(left, $topcolor 0%, $bottomcolor 100% ); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$topcolor), color-stop(100%,$bottomcolor)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* Opera11.10+ */
-    background: -ms-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* IE10+ */
-    background: linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* W3C */
-}
-
+@import "_mixins";
+@import "_pagination";
+@import "_loader";
 @import "layout";
 
 @import "languages", "genres", "media";

@@ -4,14 +4,27 @@ app.views.Media = app.views.Base.extend({
   id: "media",
 
   initialize: function() {
-    this.collection.bind("fetched", this.removeLoader, this);
+    if( this.options.pagination ) {
+      this.pagination = this.options.pagination;
+      this.pagination.bind("change", this.pageUpdate, this);
+    }
+    
+    this.collection.bind("fetched", this.done, this);
     this.collection.bind("add", this.renderModel, this);
   },
 
   render: function() {
-    if(this.collection.fetch({add: true})) {
+    this.$tmp = this.$el.clone();
+    this.$tmp.empty();
+    
+    if( this.collection.length == 0 ) {
+      this.collection.fetch({add: true});
       this.appendLoader();
+    } else {
+      this.collection.each(this.renderModel, this)
+      this.done();
     }
+    
     return this;
   },
 
@@ -19,7 +32,7 @@ app.views.Media = app.views.Base.extend({
     var subView = new app.views.Medium({
       model: medium
     });
-    this.$el.append( subView.render().el );
+    this.$tmp.append( subView.render().el );
   },
 
   appendLoader: function() {
@@ -33,6 +46,17 @@ app.views.Media = app.views.Base.extend({
 
   removeLoader: function() {
     $("#loader").empty();
+  },
+
+  pageUpdate: function() {
+    this.collection.reset();
+    this.collection.url = this.pagination.get("url");
+    this.render();
+  },
+
+  done: function() {
+    this.removeLoader();
+    this.$el.html(this.$tmp.html());
   }
 
 });
