@@ -25,24 +25,25 @@ body {
     }
 
     div {
-      padding: 1.5em 2em;
+      padding: 1.5em 0;
       width: $width;
       margin: 0 auto;
       position: relative;
+      
+	  /* if https://github.com/nex3/sass/issues/46 is resolved, comment
+	  * the following in
+	  *@media (max-width: #{$flowWidth}) {*/
+	  @media (max-width: 800px) {
+	    width: 100%;
+	    min-width: $minWidth;
+	  }
     }
 
     ul {
         padding: 0;
         list-style: none;
         margin: 0;
-
-		/* if https://github.com/nex3/sass/issues/46 is resolved, comment
-		 * the following in
-		 *@media (max-width: #{$flowWidth}) {*/
-		@media (max-width: 800px) {
-			width: 100%;
-			min-width: $minWidth;
-		}
+        display: inline-block;
 
 		&.user {
           position: absolute;
@@ -77,6 +78,14 @@ body {
 
 	@include -f-border-radius-bottom(4px);
 	@include -f-box-shadow(0, 2px, 3px, #BBB);
+	
+	/* if https://github.com/nex3/sass/issues/46 is resolved, comment
+	* the following in
+	*@media (max-width: #{$flowWidth}) {*/
+	@media (max-width: 800px) {
+	  width: 100%;
+	  min-width: $minWidth;
+	}
 }
 
 #content {
