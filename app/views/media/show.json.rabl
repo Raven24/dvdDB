@@ -29,3 +29,19 @@ end
 child :genres do |genre|
   attributes :name
 end
+
+node :owner_count do |medium|
+  medium.ownerships.size
+end
+
+child :ownerships do |ownership|
+  attributes :medium_id, :user_id
+end
+
+child :users do |user|
+  attributes :name
+end
+
+node :user_has_it do |medium|
+  current_user.media.exists?(@medium)
+end

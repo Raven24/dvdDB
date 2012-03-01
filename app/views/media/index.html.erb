@@ -18,6 +18,7 @@ var pages =  <%=  @pages %>;
 <% content_for :head do
   out = []
   out << handlebars("medium")
+  out << handlebars("ownership")
   out << handlebars("pagination")
 
   out.join.html_safe

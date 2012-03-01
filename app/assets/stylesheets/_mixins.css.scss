@@ -3,14 +3,10 @@ $background: #EEE;
 $width: 950px;
 $flowWidth: 800px;
 $minWidth: 360px;
+$defPadding: .43em .8em;
 $minPadding: .2em .4em;
 $dark: #222;
 $light: #CCC;
-
-
-@mixin -f-default-padding {
-    padding: .43em .8em;
-}
 
 @mixin -f-border-radius($radius: 4px) {
     -moz-border-radius: $radius;
@@ -51,4 +47,13 @@ $light: #CCC;
     background: -o-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* Opera11.10+ */
     background: -ms-linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* IE10+ */
     background: linear-gradient(left, $topcolor 0%,$bottomcolor 100%); /* W3C */
+}
+
+@mixin -f-button($color) {
+  padding: $minPadding;
+  border: 1px solid darken($color, 35%);
+  border-left: none;
+  border-top: none;
+  @include -f-border-radius(3px);
+  @include -f-top-bottom-gradient(lighten($color, 25%), $color);
 }

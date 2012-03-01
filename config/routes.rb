@@ -12,6 +12,8 @@ DvdDB::Application.routes.draw do
     
   resources :languages
 
+  resources :ownerships
+
   root :to => 'media#index'
 
   # The priority is based upon order of creation:

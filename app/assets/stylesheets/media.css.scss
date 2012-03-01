@@ -49,6 +49,15 @@
 
 }
 
+.user_actions {
+  margin: 2em 0 .7em;
+}
+
+.have-it {
+  color: #fff;
+  @include -f-button(#006400);
+}
+
 .new_medium, .edit_medium {
 	width: 85%;
 

@@ -11,7 +11,7 @@
 .language {
 	margin: 1em 0;
 	display: inline-block;
-	@include -f-default-padding;
+	padding: $defPadding;
 	@include -f-left-right-gradient(#EEE,#FFF);
 	@include -f-border-radius(3px);
 

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229011414) do
+ActiveRecord::Schema.define(:version => 20120229220137) do
+
+  create_table "formats", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "genres", :force => true do |t|
     t.string   "name"
@@ -38,6 +44,11 @@ ActiveRecord::Schema.define(:version => 20120229011414) do
     t.datetime "updated_at"
   end
 
+  create_table "languages_ownerships", :id => false, :force => true do |t|
+    t.integer "language_id"
+    t.integer "ownership_id"
+  end
+
   create_table "media", :force => true do |t|
     t.string   "title"
     t.text     "plot"
@@ -49,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20120229011414) do
     t.string   "imdb_id"
     t.string   "imdb_url"
   end
+
+  create_table "ownerships", :id => false, :force => true do |t|
+    t.integer  "medium_id"
+    t.integer  "user_id"
+    t.string   "location"
+    t.boolean  "private"
+    t.integer  "format_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ownerships", ["medium_id", "user_id"], :name => "index_ownerships_on_medium_id_and_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

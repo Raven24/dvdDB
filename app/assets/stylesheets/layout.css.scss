@@ -53,7 +53,7 @@ body {
 
         a {
             display: block; 
-            @include -f-default-padding;
+            padding: $defPadding;
             @include -f-border-radius(4px);
         }
         a:hover {

@@ -14,8 +14,8 @@ app.views.Media = app.views.Base.extend({
   },
 
   render: function() {
-    this.$tmp = this.$el.clone();
-    this.$tmp.empty();
+    var minHeight = this.$el.height();
+    this.$el.empty().css('minHeight', minHeight);    
     
     if( this.collection.length == 0 ) {
       this.collection.fetch({add: true});
@@ -32,7 +32,7 @@ app.views.Media = app.views.Base.extend({
     var subView = new app.views.Medium({
       model: medium
     });
-    this.$tmp.append( subView.render().el );
+    this.$el.append( subView.render().el );
   },
 
   appendLoader: function() {
@@ -56,7 +56,7 @@ app.views.Media = app.views.Base.extend({
 
   done: function() {
     this.removeLoader();
-    this.$el.html(this.$tmp.html());
+    this.$el.css('minHeight','');
   }
 
 });
