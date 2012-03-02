@@ -4,9 +4,9 @@ app.Router = Backbone.Router.extend({
   routes: {
     "media"           : "media",
     "media/page/:page": "media",
-    "media/:id"       : "medium",
+    "media/:id"       : "medium"/*,
     "genres"          : "genres",
-    "languages"       : "languages",
+    "languages"       : "languages"*/
   },
 
   media: function(page) {
@@ -38,13 +38,13 @@ app.Router = Backbone.Router.extend({
   },
 
   medium: function(id) {
-    app.possessions = new app.collections.Ownerships;
+    app.possessions = new app.collections.Ownerships(userPossessions);
     app.medium = new app.models.Medium(modelAttributes);
     app.page   = new app.views.Medium({
       'model'       : app.medium,
       'className'   : 'single',
-      'templateName': 'singleMedium'
+      'templateName': 'mediumSingle'
     }).render();
-    $('#medium').replaceWith(app.page.el);
+    $('body #medium').replaceWith(app.page.el);
   }
 });

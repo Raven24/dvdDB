@@ -1,11 +1,9 @@
 <script type="text/javascript">
 var modelAttributes = <%= raw render(:file => 'media/show.json.rabl', :object => @medium) %>;
+var userPossessions  = <%= raw render(:file => 'ownerships/index.json.rabl', :object => current_user.ownerships) %>;
 </script>
 
 <div id="medium">
 <!-- insert content here -->
 </div>
 
-<% content_for :head do
-  handlebars "singleMedium"
-end %>
