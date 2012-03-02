@@ -6,7 +6,14 @@ $minWidth: 360px;
 $defPadding: .43em .8em;
 $minPadding: .2em .4em;
 $dark: #222;
+$grey: #A9A9A9;
+$gray: $grey;
 $light: #CCC;
+$green: #669900;
+$blue: #0099cc;
+$magenta: #9933cc;
+$orange: #ff8800;
+$red: #cc0000;
 
 @mixin -f-border-radius($radius: 4px) {
     -moz-border-radius: $radius;
@@ -50,10 +57,48 @@ $light: #CCC;
 }
 
 @mixin -f-button($color) {
+  color: #fff;
   padding: $minPadding;
-  border: 1px solid darken($color, 35%);
+  border: 1px solid darken($color, 25%);
   border-left: none;
   border-top: none;
+  text-decoration: none;
+  text-shadow: -1px -1px 1px darken($color,10%);
   @include -f-border-radius(3px);
   @include -f-top-bottom-gradient(lighten($color, 25%), $color);
+
+  &:visited {
+    color: #fff;
+  }
+  &:hover {
+    color: #fff;
+    @include -f-top-bottom-gradient(lighten($color, 30%), lighten($color,5%));
+  }
+  &:focus {
+    border: 1px solid darken($color, 25%);
+    border-bottom: none;
+    border-right: none;
+    text-shadow: 1px 1px 1px darken($color,10%);
+    @include -f-top-bottom-gradient($color,lighten($color, 25%));
+  }
+}
+
+@mixin -f-beneath() {
+  background: lighten($dark,15%);
+  color: lighten($light, 10%);
+  border-top: 3px solid $light;
+  @include -f-box-shadow(inset 0, 15px, 8px -10px , $dark);
+  padding: $defPadding;
+  z-index: 999;
+}
+
+.grey {
+  color: $grey;
+}
+.gray {
+  @extend .grey;
+}
+
+.inline {
+  display: inline-block;
 }

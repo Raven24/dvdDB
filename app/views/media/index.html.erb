@@ -1,5 +1,6 @@
 <script type="text/javascript">
 var modelAttributes = <%= raw render(:file => 'media/index.json.rabl', :object => @media) %>;
+var userPossessions  = <%= raw render(:file => 'ownerships/index.json.rabl', :object => current_user.ownerships) %>;
 var pages =  <%=  @pages %>;
 </script>
 
@@ -15,11 +16,3 @@ var pages =  <%=  @pages %>;
 <!-- insert content here -->
 </div>
 
-<% content_for :head do
-  out = []
-  out << handlebars("medium")
-  out << handlebars("ownership")
-  out << handlebars("pagination")
-
-  out.join.html_safe
-end %>

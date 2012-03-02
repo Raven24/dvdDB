@@ -2,11 +2,12 @@ class Medium < ActiveRecord::Base
 
   validates :title, :presence => true
   has_and_belongs_to_many :genres
-  has_and_belongs_to_many :users, :join_table => :ownerships
-
+  
   has_many :images
   accepts_nested_attributes_for :images
-  has_many :ownerships
+
+  has_many :ownerships, :conditions => proc{ [ "private = :private", {:private => false}] }
+  has_many :users, :through => :ownerships
 
   def cover?
     !images.empty?

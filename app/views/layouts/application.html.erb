@@ -14,6 +14,21 @@
   <%= csrf_meta_tags %>
 
   <%= yield :head %>
+
+  <%=
+    out = []
+    out << handlebars("medium")
+    out << handlebars("ownership")
+    out << handlebars("ownershipForm")
+    out << handlebars("pagination")
+
+    out.join.html_safe
+  %>
+
+  <script type="text/javascript">
+    var currentUser = <%= raw render(:file => 'users/show.json.rabl', :object => current_user) %>;
+  </script>
+  
 </head>
 <body>
 

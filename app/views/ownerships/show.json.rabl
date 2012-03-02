@@ -1,6 +1,6 @@
 object @ownership
 
-attributes :location, :private
+attributes :id, :location, :private
 
 node :format do |ownership|
   ownership.format.name unless ownership.format.nil?
@@ -12,4 +12,8 @@ end
 
 node :user_id do |ownership|
   ownership.user.id
+end
+
+child :user do |user|
+  attributes :name, :email
 end

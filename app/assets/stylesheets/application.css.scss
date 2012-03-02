@@ -86,9 +86,17 @@ td { vertical-align: top; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
+
 @import "_mixins";
 @import "_pagination";
 @import "_loader";
 @import "layout";
+
+input::-webkit-input-placeholder {
+    color: $gray;
+}
+input:-moz-placeholder {
+    color: $gray;
+}
 
 @import "languages", "genres", "media";

@@ -5,7 +5,7 @@ class MediaController < ApplicationController
   respond_to :html, :json
   
   def index
-    @media = Medium.includes(:genres).order("title").page(params[:page]).per(6)
+    @media = Medium.includes(:genres, :ownerships).order("title").page(params[:page]).per(6)
     @pages = @media.num_pages
   end
 

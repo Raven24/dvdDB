@@ -18,6 +18,8 @@ app.Router = Backbone.Router.extend({
     }
     
     app.media = new app.collections.Media(attrs, opts);
+    app.possessions = new app.collections.Ownerships(userPossessions);
+    
     app.pagination = new app.models.Pagination({
       'pages'  : pages,
       'page'   : page,
@@ -36,6 +38,7 @@ app.Router = Backbone.Router.extend({
   },
 
   medium: function(id) {
+    app.possessions = new app.collections.Ownerships;
     app.medium = new app.models.Medium(modelAttributes);
     app.page   = new app.views.Medium({
       'model'       : app.medium,

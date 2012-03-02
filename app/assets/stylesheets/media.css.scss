@@ -1,9 +1,10 @@
 
 .medium {
+    $imgMargin: 110px;
+    
 	@extend .clearfix;
 	
 	border: 2px solid #CCC;
-	padding: 6px;
 	position: relative;
 	margin: 0 0 1.3em;
 	@include -f-border-radius(3px);
@@ -13,12 +14,18 @@
 		margin-right: 10px;
 	}
 
+	.data {
+      margin-left: $imgMargin;
+      padding: $defPadding;
+	}
+
 	.title {
 		font-size: 1.5em;
 		font-weight: bolder;
 		margin-bottom: .5em;
 	}
-	.actions {
+
+	.data > .actions {
 		position: absolute;
 		top: 6px; right: 6px; 
 	}
@@ -30,6 +37,20 @@
       content: "";
 	}
 
+	.user_actions {
+      margin: 1.2em 0 0;
+      font-size: .95em;
+      min-height: 45px;
+      @include -f-beneath();
+
+      & > div {
+        margin-left: $imgMargin;
+        padding: $defPadding;
+      }
+      .actions {
+        margin-top: .8em;
+      }
+	}
 }
 
 .figures {
@@ -49,13 +70,17 @@
 
 }
 
-.user_actions {
-  margin: 2em 0 .7em;
+.have-it, .save {
+  @include -f-button($green);
 }
-
-.have-it {
-  color: #fff;
-  @include -f-button(#006400);
+.change-something {
+  @include -f-button($blue);
+}
+.not-anymore {
+  @include -f-button($red);
+}
+.cancel {
+  @include -f-button($grey);
 }
 
 .new_medium, .edit_medium {

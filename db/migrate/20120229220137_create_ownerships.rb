@@ -5,7 +5,7 @@ class CreateOwnerships < ActiveRecord::Migration
       t.timestamps
     end
     
-    create_table :ownerships, :id => false do |t|
+    create_table :ownerships do |t|
       t.references :medium
       t.references :user
       t.string :location

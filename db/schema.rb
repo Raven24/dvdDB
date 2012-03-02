@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20120229220137) do
     t.string   "imdb_url"
   end
 
-  create_table "ownerships", :id => false, :force => true do |t|
+  create_table "ownerships", :force => true do |t|
     t.integer  "medium_id"
     t.integer  "user_id"
     t.string   "location"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120229220137) do
   add_index "ownerships", ["medium_id", "user_id"], :name => "index_ownerships_on_medium_id_and_user_id", :unique => true
 
   create_table "users", :force => true do |t|
+    t.string   "name"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"

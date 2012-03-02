@@ -1,6 +1,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
+      t.string :name
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
@@ -46,6 +47,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
 
-    drop_table :languages_media
+    drop_table :languages_media if self.table_exists? :languages_media
+  end
+
+  def self.table_exists?(name)
+    ActiveRecord::Base.connection.tables.include?(name)
   end
 end

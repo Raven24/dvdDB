@@ -1,6 +1,31 @@
 
+<div class="others">
+  {{#if ownerships}}
+    <strong>People who have this:</strong>
+    {{#each ownerships}}
+    <span>{{#if user.name}}{{user.name}}{{else}}{{user.email}}{{/if}}</span>
+    {{/each}}
+
+  {{else}}
+    <strong class="grey">Nobody else has this...</strong>
+  {{/if}}
+</div>
+
 {{#if user_has_it}}
-<a href="#" class="got-it">You already have it!</a>
+<span class="grey">
+  You already got it!<br/>
+  It's in/on your {{location}} and you
+  {{#if private}}
+  decided to keep it private
+  {{else}}
+  share it with everyone here
+  {{/if}}
+</span><br />
+<div class="actions">
+  <a href="#" class="not-anymore">Not anymore</a>
+  <a href="#" class="change-something">Change something</a>
 {{else}}
-<a href="#" class="have-it">I have it</a>
+<div class="actions">
+  <a href="#" class="have-it">I have it</a>
 {{/if}}
+</div>

@@ -35,7 +35,7 @@ node :owner_count do |medium|
 end
 
 child :ownerships do |ownership|
-  attributes :medium_id, :user_id
+  extends "ownerships/show"
 end
 
 child :users do |user|

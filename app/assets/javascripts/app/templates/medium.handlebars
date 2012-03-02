@@ -3,28 +3,29 @@
   <a href="{{show_url}}"><img src="{{thumbnail_url}}" alt="poster" /></a>
 </div>
 
-<div class="title">
-  <a href="{{show_url}}">{{title}}</a>
-</div>
-<div class="figures">
-  <span>{{year}}</span>
-  <span>{{runtime}} min</span>
-  <span class="genres">{{#each genres}}<span>{{name}}</span>{{/each}}</span>
-</div>
-<div class="plot">
-  {{plot}}
+<div class="data">
+  <div class="title">
+    <a href="{{show_url}}">{{title}}</a>
+  </div>
+
+  <div class="figures">
+    <span>{{year}}</span>
+    <span>{{runtime}} min</span>
+    <span class="genres">{{#each genres}}<span>{{name}}</span>{{/each}}</span>
+  </div>
+
+  <div class="plot">
+    {{plot}}
+  </div>
+
+  <div class="actions">
+    {{#if edit_url}}
+    <a href="{{edit_url}}">Edit</a>
+    {{/if}}
+    {{#if delete_url}}
+    <a href="{{delete_url}}">Delete</a>
+    {{/if}}
+  </div>
 </div>
 
-<div class="actions">
-  {{#if edit_url}}
-  <a href="{{edit_url}}">Edit</a>
-  {{/if}}
-  {{#if delete_url}}
-  <a href="{{delete_url}}">Delete</a>
-  {{/if}}
-</div>
-
-<div class="user_actions">
-
-</div>
-  
+<div class="user_actions"></div>

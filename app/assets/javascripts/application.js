@@ -21,5 +21,8 @@ $(document).ready(function() {
 			$(this).remove();
 		});
 	}, 3500);
-	
+
+    $('a').live('click', function(){
+      $(this).blur();
+    });
 });

@@ -21,7 +21,7 @@ class OwnershipsController < ApplicationController
   def create
     medium = Medium.find(params[:ownership][:medium_id])
     
-    @ownership = Ownership.new
+    @ownership = Ownership.new(params[:ownership])
     @ownership.medium = medium
     @ownership.user = current_user
 
@@ -34,25 +34,18 @@ class OwnershipsController < ApplicationController
 
   def update
     @ownership = Ownership.find(params[:id])
+    params[:ownership].delete(:user)
 
-    respond_to do |format|
-      if @ownership.update_attributes(params)
-        format.html { redirect_to genres_url, :notice => 'Genre was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @ownership.errors, :status => :unprocessable_entity }
-      end
+    if @ownership.update_attributes(params[:ownership])
+      render :action => "show"
+    else
+      render :action => "edit"
     end
   end
 
   def destroy
     @ownership = Ownership.find(params[:id])
     @ownership.destroy
-
-    respond_to do |format|
-      format.html { redirect_to genres_url }
-      format.json { head :ok }
-    end
+    render :action => "show"
   end
 end
