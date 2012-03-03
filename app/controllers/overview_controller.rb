@@ -3,7 +3,8 @@ class OverviewController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    render :text => "dashboard under construction ...", :layout => true
+    @media = current_user.media.order(:media=>[:title]).page(params[:page]).per(15)
+    @pages = @media.num_pages
   end
 
 end

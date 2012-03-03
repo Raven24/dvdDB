@@ -29,9 +29,11 @@ app.views.Media = app.views.Base.extend({
   },
 
   renderModel: function(medium) {
-    var subView = new app.views.Medium({
-      model: medium
-    });
+    var opts = { 'model': medium };
+    if( this.options.template ) {
+      opts.templateName = this.options.template
+    }
+    var subView = new app.views.Medium(opts);
     this.$el.append( subView.render().el );
   },
 

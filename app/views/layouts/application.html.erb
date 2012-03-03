@@ -19,6 +19,7 @@
     out = []
     out << handlebars("medium")
     out << handlebars("mediumSingle")
+    out << handlebars("mediumSmall")
     out << handlebars("ownership")
     out << handlebars("ownershipForm") { render "ownerships/form" }
     out << handlebars("pagination")
@@ -52,6 +53,7 @@
   <% end %>
 
   <div id="content">
+    <div id="loader"></div>
     <%= yield %>
   </div>
 

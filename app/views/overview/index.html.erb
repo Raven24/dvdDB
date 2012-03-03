@@ -1,16 +1,13 @@
 <script type="text/javascript">
 var modelAttributes = <%= raw render(:file => 'media/index.json.rabl', :object => @media) %>;
-var userPossessions  = <%= raw render(:file => 'ownerships/index.json.rabl', :object => current_user.ownerships) %>;
 var pages =  <%=  @pages %>;
+var userPossessions  = <%= raw render(:file => 'ownerships/index.json.rabl', :object => current_user.ownerships) %>;
 </script>
 
-<h1>Listing media</h1>
-
-<%= link_to 'New Medium', new_medium_path %>
+<h2>Your Media</h2>
 
 <div class="pagination"></div>
 
 <div id="media">
 <!-- insert content here -->
-</div>
-
+</div> 

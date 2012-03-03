@@ -1,4 +1,4 @@
  
 object current_user
 
-attributes :name, :email
+attributes :id, :name, :email

@@ -4,9 +4,21 @@ app.Router = Backbone.Router.extend({
   routes: {
     "media"           : "media",
     "media/page/:page": "media",
-    "media/:id"       : "medium"/*,
+    "media/new"       : "",
+    "media/:id"       : "medium",
+    ""                : "overview"/*,
     "genres"          : "genres",
     "languages"       : "languages"*/
+  },
+
+  overview: function() {
+    app.media = new app.collections.Media(modelAttributes, {});
+    app.possessions = new app.collections.Ownerships(userPossessions);
+    app.page = new app.views.Media({
+      'collection' : app.media,
+      'template'   : 'mediumSmall'
+    }).render();
+    $('body #media').replaceWith(app.page.el);
   },
 
   media: function(page) {
