@@ -1,0 +1,35 @@
+
+<!-- HANDLEBARS TEMPLATE -->
+
+<div class="field">
+  <label for="location">Where do you keep it?</label>
+  <input type="text" name="location" style="width:20em;" placeholder="DVD shelf" value="{{location}}" />
+</div>
+
+<div class="field inline">
+  <label for="format" data-selected="{{format.id}}">Format</label>
+  <%= select_tag(:format, options_from_collection_for_select(Format.all, :id, :name), {:include_blank=>true, :style=>"width:15em;", :name=>"format[]"}) %>
+</div>
+
+<div class="field inline">
+  <input type="checkbox" name="private" value="1" {{#if private}}checked="checked"{{/if}} />
+  <label class="inline" for="private">private?</label>
+</div>
+
+<div class="field">
+  <label for="languages" data-selected="[{{language_ids}}]">Languages</label>
+  <% Language.all(:order=>'name ASC').each do |lang| %>
+    <div class="checkbox inline">
+      <%= check_box_tag :languages,
+                        lang.id,
+                        false,
+                        :name => "languages_ids[]" %>
+      <%= label_tag :language_ids, lang.name %>
+    </div>
+  <% end %>
+</div>
+
+<div class="actions">
+  <a href="#" class="save">save</a>
+  <a href="#" class="cancel">cancel</a>
+</div>

@@ -7,7 +7,7 @@ app.views.Ownership = app.views.Base.extend({
     }
     app.possessions.bind("add", this.possession, this);
     app.possessions.bind("remove", this.possession, this);
-    app.possessions.bind("sync", this.reset, this);
+    app.possessions.bind("sync", this.possession, this);
     this.bind("templateChange", this.render, this);
     this.possession();
   },
@@ -28,26 +28,39 @@ app.views.Ownership = app.views.Base.extend({
     var modelJSON = (this.model) ? this.defaultPresenter() : { ownership: {} };
     return _.extend( modelJSON.ownership, {
       user_has_it: this.has_it,
-      ownerships: this.options.medium.ownerships.toJSON()
+      ownerships: this.collection.toJSON(),
+      language_ids: (this.model) ? _.map(this.model.get('languages'), function(elem){
+        return elem.id;
+      }).join(", ") : ""
     });
   },
 
   render: function() {
     this.renderTemplate();
+    this.setForm();
     return this;
   },
 
   possession: function() {
     this.has_it = false;
-    this.model = null;
-    this.resetElement();
-    app.possessions.each(function(elem) {
-      if(elem.get("medium_id") == this.options.medium.get("id")) {
-        this.model = elem;
-        this.has_it = true;
-        return true;
+    if( this.model ) {
+      this.has_it = true;
+      if( !this.collection.get(this.model.get("id")) && !this.model.get("private") ) {
+        this.collection.add(this.model);
       }
-    }, this);
+      if( this.collection.get(this.model.get("id")) && this.model.get("private") ) {
+        this.collection.remove(this.model);
+      }
+    } else {
+      app.possessions.each(function(elem) {
+        if(elem.get("medium_id") == this.options.medium.get("id")) {
+          this.model = elem;
+          this.has_it = true;
+          return true;
+        }
+      }, this);
+    }
+    this.resetElement();
     this.render();
   },
 
@@ -105,8 +118,9 @@ app.views.Ownership = app.views.Base.extend({
 
   disown: function(evt) {
     evt.preventDefault();
-    this.options.medium.ownerships.remove(this.model);
+    this.collection.remove(this.model);
     this.model.destroy({wait: true});
+    this.model = false;
     this.has_it = false;
   }
 });
