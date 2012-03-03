@@ -20,7 +20,7 @@
     out << handlebars("medium")
     out << handlebars("mediumSingle")
     out << handlebars("ownership")
-    out << handlebars("ownershipForm")
+    out << handlebars("ownershipForm") { render "ownerships/form" }
     out << handlebars("pagination")
 
     out.join.html_safe

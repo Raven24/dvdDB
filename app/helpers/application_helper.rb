@@ -1,8 +1,12 @@
 module ApplicationHelper
 
-  def handlebars name
+  def handlebars(name, &block)
     content_tag :script, :type=>"text/x-handlebars-template", :id=>name do
-      Rails.root.join("app","assets","javascripts","app","templates","#{name}.handlebars").read.html_safe
+      if block_given?
+        yield
+      else
+        Rails.root.join("app","assets","javascripts","app","templates","#{name}.handlebars").read.html_safe
+      end
     end
   end
   

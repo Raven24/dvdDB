@@ -49,7 +49,7 @@
 	</div>
   <% end %>
 
-	<div class="field inline">
+  <div class="field inline">
     <%= f.label :genres %>
     <% Genre.all(:order=>'name ASC').each do |genre| %>
       <div class="checkbox">
