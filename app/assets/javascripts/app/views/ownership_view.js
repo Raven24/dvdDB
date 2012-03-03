@@ -81,20 +81,21 @@ app.views.Ownership = app.views.Base.extend({
   },
 
   parseForm: function() {
-    return {
-      medium_id: this.$el.parents(".medium").data("id"),
-      private  : this.$('*[name=private]').is(':checked'),
-      location : this.$('*[name=location]').val()
-    };
+    return _.extend(app.views.Base.prototype.parseForm.call(this), { medium: {id: this.options.medium.get("id") }});
+  },
+
+  setForm: function() {
+    this.$('select').each(function() {
+      $(this).val($(this).siblings('label').data('selected'));
+    });
+    this.$('.checkbox').each(function() {
+      $(this).find('*[type=checkbox]').val($(this).siblings('label').data('selected'));
+    });
   },
 
   create: function() {
     var opts = this.parseForm();
-
     this.model = app.possessions.create(opts, {wait: true});
-    if( !this.model.get("private") ) {
-      this.options.medium.ownerships.add(this.model);
-    }
   },
 
   update: function() {

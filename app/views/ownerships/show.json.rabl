@@ -3,7 +3,9 @@ object @ownership
 attributes :id, :location, :private
 
 node :format do |ownership|
-  ownership.format.name unless ownership.format.nil?
+  { :id => ownership.format.id,
+    :name => ownership.format.name
+  } unless ownership.format.nil?
 end
   
 node :medium_id do |ownership|
@@ -15,5 +17,9 @@ node :user_id do |ownership|
 end
 
 child :user do |user|
-  attributes :name, :email
+  attributes :id, :name, :email
+end
+
+child :languages do |language|
+  attributes :id, :name
 end

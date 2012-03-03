@@ -19,10 +19,7 @@ class OwnershipsController < ApplicationController
   end
 
   def create
-    medium = Medium.find(params[:ownership][:medium_id])
-    
     @ownership = Ownership.new(params[:ownership])
-    @ownership.medium = medium
     @ownership.user = current_user
 
     if @ownership.save
