@@ -1,13 +1,14 @@
 class OwnershipsController < ApplicationController
 
   respond_to :json
+  before_filter :handle_api_post, :only => [:create, :update]
 
   def index
     @ownerships = Ownership.all
   end
 
   def show
-    @ownership = Ownership.find(params[:id])
+    @ownership = Ownership.includes(:medium, :user, :format, :languages).find(params[:id])
   end
 
   def new
