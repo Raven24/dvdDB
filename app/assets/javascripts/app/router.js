@@ -15,8 +15,9 @@ app.Router = Backbone.Router.extend({
     app.media = new app.collections.Media(modelAttributes, {});
     app.possessions = new app.collections.Ownerships(userPossessions);
     app.page = new app.views.Media({
-      'collection' : app.media,
-      'template'   : 'mediumSmall'
+      'collection'  : app.media,
+      'templateName': 'mediumSmall',
+      'className'   : 'shortList'
     }).render();
     $('body #media').replaceWith(app.page.el);
   },

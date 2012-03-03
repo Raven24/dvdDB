@@ -157,3 +157,23 @@
     }
   }
 }
+
+.shortList .medium {
+  position: relative;
+  padding: $defPadding;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid $grey;
+
+  &:last-child { border: none; }
+
+  .title {
+    display: inline;
+    font-size: 1.2em;
+  }
+  .figures {
+    position: absolute;
+    right: 0; top: .43em;
+  }
+
+}
