@@ -13,8 +13,10 @@ var app = {
       var elem = $(this);
       JST[elem.attr("id")] = Handlebars.compile(elem.html());
     });
-    
-    app.router = new app.Router();
+
+    app.loader = new app.views.Loader().render();
+    $('#loader').replaceWith(app.loader.el);
+    app.router = new app.Router;
     
     Backbone.history.start({
       pushState: true

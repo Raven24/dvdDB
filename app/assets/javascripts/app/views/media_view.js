@@ -19,7 +19,7 @@ app.views.Media = app.views.Base.extend({
     
     if( this.collection.length == 0 ) {
       this.collection.fetch({add: true});
-      this.appendLoader();
+      app.loader.show();
     } else {
       this.collection.each(this.renderModel, this)
       this.done();
@@ -35,19 +35,6 @@ app.views.Media = app.views.Base.extend({
     this.$el.append( subView.render().el );
   },
 
-  appendLoader: function() {
-    $("#loader").html(
-      $("<img />", {
-        "src"  : "/assets/loading.gif",
-        "class": "loader"
-      })
-    );
-  },
-
-  removeLoader: function() {
-    $("#loader").empty();
-  },
-
   pageUpdate: function() {
     this.collection.reset();
     this.collection.url = this.pagination.get("url");
@@ -55,7 +42,7 @@ app.views.Media = app.views.Base.extend({
   },
 
   done: function() {
-    this.removeLoader();
+    app.loader.hide();
     this.$el.css('minHeight','');
   }
 
