@@ -17,7 +17,7 @@ app.views.Media = app.views.Base.extend({
     var minHeight = this.$el.height();
     this.$el.empty().css('minHeight', minHeight);    
     
-    if( this.collection.length == 0 ) {
+    if( this.collection.length == 0 && this.options.autoFetch ) {
       this.collection.fetch({add: true});
       app.loader.show();
     } else {
@@ -36,6 +36,10 @@ app.views.Media = app.views.Base.extend({
     this.$el.append( subView.render().el );
   },
 
+  noContent: function() {
+    this.$el.html('<em class="grey">There is no content to display here</em>');
+  },
+
   pageUpdate: function() {
     this.collection.reset();
     this.collection.url = this.pagination.get("url");
@@ -43,6 +47,9 @@ app.views.Media = app.views.Base.extend({
   },
 
   done: function() {
+    if( this.collection.length == 0 ) {
+      this.noContent();
+    }
     app.loader.hide();
     this.$el.css('minHeight','');
   }

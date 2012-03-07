@@ -17,7 +17,8 @@ app.Router = Backbone.Router.extend({
     app.page = new app.views.Media({
       'collection'  : app.media,
       'templateName': 'mediumSmall',
-      'className'   : 'shortList'
+      'className'   : 'shortList',
+      'autoFetch'   : false
     }).render();
     $('body #media').replaceWith(app.page.el);
   },
@@ -43,7 +44,8 @@ app.Router = Backbone.Router.extend({
     }).render();
     app.page  = new app.views.Media({
       'collection': app.media,
-      'pagination': app.pagination
+      'pagination': app.pagination,
+      'autoFetch' : true
     }).render();
     
     $('body #media').replaceWith(app.page.el);

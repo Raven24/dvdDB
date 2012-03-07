@@ -4,6 +4,12 @@ class CreateOwnerships < ActiveRecord::Migration
       t.string :name
       t.timestamps
     end
+
+    Format.create :name=>"AVI"
+    Format.create :name=>"MKV (HD)"
+    Format.create :name=>"DVD"
+    Format.create :name=>"BluRay"
+    Format.create :name=>"VHS"
     
     create_table :ownerships do |t|
       t.references :medium
